@@ -1,0 +1,66 @@
+{
+  "skill_name": "mba-sop-intelligence",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Bewerte diesen FMS-SOP-Entwurf einer GEF-Kandidatin mit starkem akademischem Profil und ohne Berufserfahrung. Identifiziere fehlende Informationen, frage gezielt nach und schreibe keine erfundenen Erfolge hinein.",
+      "expected_output": "Das Skill erstellt zuerst ein Candidate Intelligence Profile, markiert Datenluecken und stellt gezielte Rueckfragen vor einem finalen Rewrite.",
+      "assertions": [
+        {
+          "name": "asks-targeted-questions-first",
+          "type": "contains_any",
+          "value": ["Missing information", "targeted", "questions", "before draft"]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Ich habe 2 Jahre IT-Erfahrung. Ueberarbeite mein SOP fuer FMS Delhi und fuehre danach eine unabhaengige 10-Reviewer-Bewertung mit Score und Ablehnungsrisiken durch.",
+      "expected_output": "Das Skill liefert Rewrite plus zehn voneinander unabhängige Reviewer-Ausgaben mit Score, Schwaechen und Rejection Triggers.",
+      "assertions": [
+        {
+          "name": "contains-ten-reviewers",
+          "type": "contains_any",
+          "value": ["Reviewer 1", "Reviewer 10", "Score", "Verdict"]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Pruefe, ob mein SOP zu generisch oder KI-haft klingt, ohne zu behaupten, dass ein AI-Detektor verlaesslich ist.",
+      "expected_output": "Das Skill nutzt heuristische Authentizitaetsmerkmale und vermeidet unhaltbare AI-Detektor-Behauptungen.",
+      "assertions": [
+        {
+          "name": "no-fake-ai-certainty",
+          "type": "not_contains",
+          "value": "guaranteed AI detection"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Nutze den gleichen SOP-Text fuer FMS und IIM und zeige mir institutionenspezifische Unterschiede statt generischer Ausgabe.",
+      "expected_output": "Das Skill differenziert Why-school-Logik je Institut und vermeidet austauschbare Abschnitte.",
+      "assertions": [
+        {
+          "name": "school-specificity",
+          "type": "contains_any",
+          "value": ["Why FMS", "school-specific", "not interchangeable"]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Hier ist ein unvollstaendiges .docx mit widerspruechlichen Daten. Erstelle alle Pflicht-Deliverables und markiere Unsicherheiten transparent.",
+      "expected_output": "Das Skill erkennt Widersprueche, kennzeichnet Unsicherheit und liefert Board-Report plus Revision-Roadmap mit Prioritaeten.",
+      "assertions": [
+        {
+          "name": "flags-contradictions",
+          "type": "contains_any",
+          "value": ["contradiction", "uncertain", "Critical", "High priority"]
+        }
+      ]
+    }
+  ]
+}
+
